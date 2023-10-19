@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: A SAM template for a Python Lambda function.
+
+Resources:
+  ParquetOptimizer:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ParquetOptimizer
+      PackageType: Image
+      ImageUri: # TODO: Add your ECR image URI here
+      MemorySize: 10240 # Allow for large memory usage
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - SQSPollerPolicy:
+            QueueName: # Write your queue name here
+        - S3FullAccessPolicy:
+            BucketName: # Write your bucket name here
+      Timeout: 900

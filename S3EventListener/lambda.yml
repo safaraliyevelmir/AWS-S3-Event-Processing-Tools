@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: A SAM template for a Python Lambda function.
+
+Resources:
+  Listener:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: S3EventListener
+      Handler: main.lambda_handler
+      Runtime: python3.10
+      Architectures:
+        - arm64
+      CodeUri: python.zip
+      MemorySize: 128
+      Policies: 
+        - AWSLambdaBasicExecutionRole
+        - SQSSendMessagePolicy:
+            QueueName: # Write your queue name here
+      Timeout: 900

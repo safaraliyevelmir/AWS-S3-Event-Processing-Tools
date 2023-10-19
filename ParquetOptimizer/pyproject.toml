@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "parquet_optimizer"
+version = "0.2.0"
+description = ""
+authors = ["safaraliyevelmir <safaraliyevelmir@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = {extras = ["parquet"], version = "^2.0.3"}
+fsspec = {extras = ["s3"], version = "^2023.6.0"}
+boto3 = "^1.28.21"
+
+[tool.poetry.dev-dependencies]
+black = "^23.7.0"
+ruff = "^0.0.282"
+
+[tool.black]
+line-length = 110
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+line_length = 110
+
+[tool.ruff]
+line-length = 110
+select = [
+  "E",   # pycodestyle errors
+  "W",  # pycodestyle warnings
+  "F",   # pyflakes
+  "UP",  # pyupgrade
+  "I",  # isort
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
